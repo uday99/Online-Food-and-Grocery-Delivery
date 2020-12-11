@@ -1,0 +1,30 @@
+{% extends 'myshoptemplate/common.html' %}
+{% block common %}
+    {% load static %}
+    <table align="center">
+    <tr>
+        <th><div class="container-fluid">
+            <img src="{% static 'images/fruits.png' %}" class="img-fluid" alt="fruits" height="200" width="350">
+            <img src="{% static 'images/grocery food.png' %}" class="img-fluid" alt="vegand" height="200" width="350">
+            <img src="{% static 'images/vburger.png' %}" class="img-fluid" alt="fruits" height="200" width="350">
+
+        </div>
+            </th >
+
+    </tr>
+    <tr>
+        <th><div class="container-fluid">
+            <img src="{% static 'images/frenchfries.png' %}" class="img-fluid" alt="fruits" height="200" width="350">
+            <img src="{% static 'images/bdcake.png' %}" class="img-fluid" alt="vegand" height="200" width="350">
+            <img src="{% static 'images/pizza.png' %}" class="img-fluid" alt="fruits" height="200" width="350">
+
+        </div>
+            </th >
+
+    </tr>
+
+
+
+    </table>
+
+{% endblock %}
