@@ -38,3 +38,7 @@ class RegisterForm(forms.ModelForm):
             'password' : forms.PasswordInput
         }
 
+
+class LoginForm(forms.Form):
+    email=forms.EmailField(max_length=150,label='Email')
+    password=forms.CharField(max_length=100,widget=forms.PasswordInput)

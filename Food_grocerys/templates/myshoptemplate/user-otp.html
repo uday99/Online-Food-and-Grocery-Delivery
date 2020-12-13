@@ -1,1 +1,47 @@
-<h1>welcome to otp validation Page</h1>
+{% extends 'myshoptemplate/common.html' %}
+{% block common %}
+<br>
+
+    <form method="post" action="{% url 'validate_otp' %}">
+    {% csrf_token %}
+
+    <table  align="center" border="2">
+    <tr>
+        <th colspan="2" style="color:red; text-align: center;background-color: royalblue;font-size: 25px">Otp validation </th>
+
+    </tr>
+     <tr>
+        <th>Email</th>
+        <th><input type="email" required name="t1"></th>
+    </tr>
+       <tr>
+        <th>contact</th>
+        <th><input type="number" required name="t2"></th>
+    </tr>
+    <tr>
+        <th>Otp</th>
+        <th><input type="number" required name="t3"></th>
+    </tr>
+    <tr>
+        <th colspan="2"  ><br><button type="submit" class="btn btn-danger" >Check Otp</button></th>
+
+    </tr>
+        {% if error %}
+            <tr>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Warning!..... </strong> {{ error }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+            </tr>
+
+    {% endif %}
+
+
+    </table>
+
+    </form>
+
+
+{% endblock %}

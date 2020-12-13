@@ -1,0 +1,27 @@
+{% extends 'myshoptemplate/common.html' %}
+{% block common %}
+    {% load static %}
+<br>
+    <h1 style="text-align: center;font-family: BlinkMacSystemFont;font-size: 30px;color: darkblue">Welcome to Login</h1>
+    <table align="center">
+    <tr>
+        <th>{{ lf.email.label }}</th>
+        <th>{{ lf.email }}</th>
+    </tr>
+    <tr>
+        <th>{{ lf.password.label }}</th>
+        <th>{{ lf.password }}</th>
+    </tr>
+    <tr>
+
+        <th colspan="2"><button type="submit" class="btn btn-primary">Submit</button></th>
+    </tr>
+
+
+
+    </table>
+
+
+
+
+{% endblock %}

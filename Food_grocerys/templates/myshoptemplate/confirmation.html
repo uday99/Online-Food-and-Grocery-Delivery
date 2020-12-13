@@ -1,0 +1,15 @@
+{% extends 'myshoptemplate/common.html' %}
+{% block common %}
+    {% load static %}
+
+    {% for x in messages %}
+         <h1 style="color: green;font-size: 50px;font-family: 'Bookman Old Style';text-align: center">{{ x }}</h1>
+
+
+    {% endfor %}
+
+    <a href="#"><h2 align="center">Login From Here</h2>
+    </a>
+
+
+{% endblock %}
