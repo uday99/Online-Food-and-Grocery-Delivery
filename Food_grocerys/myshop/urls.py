@@ -19,5 +19,6 @@ from myshop import views
 
 urlpatterns = [
     path('',views.showIndex,name='main'),
-    path('register/',views.register,name='register')
+    path('register/',views.register,name='register'),
+    path('user-otp',views.userOtp,name='user-otp')
 ]

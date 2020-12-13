@@ -1,7 +1,42 @@
 {% extends 'myshoptemplate/common.html' %}
 {% block common %}
-<h1 style="color: white">Register Page</h1>
+<h1 style="text-align: center;color: green">Registration Page</h1>
+
+ <form method="post" action="{% url 'register' %}">
+ {% csrf_token %}
+<table align="center">
+<tr>
+    <th>{{ rf.name.label }}</th>
+    <th>{{ rf.name }}</th>
+</tr>
+<tr>
+    <th>{{ rf.contact.label }}</th>
+    <th>{{ rf.contact }}</th>
+</tr>
+<tr>
+    <th>{{ rf.email.label }}</th>
+    <th>{{ rf.email }}</th>
+</tr>
+<tr>
+    <th>{{ rf.password.label }}</th>
+    <th>{{ rf.password }}</th>
+</tr>
 
 
+<tr>
+    <th>
+        <input type="hidden" name="otp" required="" id="id_otp" value="0">
+    </th>
+
+</tr>
+<tr>
+    <th colspan="2">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </th>
+
+</tr>
+
+</table>
+</form>
 
 {% endblock %}
