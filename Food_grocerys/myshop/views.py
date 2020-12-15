@@ -5,7 +5,8 @@ from django.contrib import messages
 
 # Create your views here.
 def showIndex(request):
-    return render(request,'myshoptemplate/index.html')
+    lf=LoginForm()
+    return render(request,'myshoptemplate/index.html',{'lf':lf})
 
 
 def register(request):
@@ -59,13 +60,42 @@ def loginPage(request):
             try:
                 em=request.POST.get('email')
                 pwd=request.POST.get('password')
-                RegistrationModel.objects.get(email=em,password=pwd)
-                return
+                result=RegistrationModel.objects.get(email=em,password=pwd)
+                if result.status == "pending":
+                    error="Sorry Your Registration is Pending..."
+                    return render(request,"myshoptemplate/login.html",{'error':error})
+                if result.status == "closed":
+                    error="Sorry your account is closed Cannotlogin"
+                    return render(request,"myshoptemplate/login.html",{'error':error})
+                request.session["contact"]= result.contact
+                request.session["name"]= result.name
+                request.session["rno"]= result.rno
+                return  redirect('v_profile')
+
             except RegistrationModel.DoesNotExist:
-                return render(request,'myshoptemplate/login.html',{'lf':lf})
+                return render(request,'myshoptemplate/login.html',{'lf':lf,'error':'Invalid Username/password'})
 
         else:
             return render(request, 'myshoptemplate/login.html', {'lf': lf})
 
     else:
         return render(request,'myshoptemplate/login.html',{'lf':lf})
+
+
+def welcomePage(request):
+    return render(request,"welcome.html")
+
+
+def viewProfile(request):
+    return render(request,'myshoptemplate/v_profile.html')
+
+
+def logoutProfile(request):
+    try:
+        del request.session["contact"]
+        del request.session["name"]
+        del request.session["rno"]
+        return redirect('main')
+    except KeyError:
+
+        return render(request,"myshoptemplate/login.html",{"error":"Please do Login"})

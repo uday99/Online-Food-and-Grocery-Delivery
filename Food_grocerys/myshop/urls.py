@@ -24,6 +24,10 @@ urlpatterns = [
     path('validate_otp/',views.validateOTp,name='validate_otp'),
     path('confirmation/',views.confirmation,name='confirmation'),
 
-    path('login/',views.loginPage,name='login')
+    path('login/',views.loginPage,name='login'),
+    path('welcome/',views.welcomePage,name='welcome'),
 
+    path('v_profile/',views.viewProfile,name='v_profile'),
+
+    path('logout/',views.logoutProfile,name='logout')
 ]

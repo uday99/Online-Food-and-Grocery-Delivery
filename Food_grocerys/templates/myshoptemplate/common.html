@@ -34,7 +34,7 @@
   <body style="background-color: white">
 
     <table align="center"  border="2" >
-        <tr><th style=" background-color: green;width: 20%" ><h1  id="h1"><span style="color: red">Food Mart</span> and <span style="color: darkblue">Grocerys</span> Store <img src="{% static 'images/delivery.png' %}" width="100" height="130"></h1></th></tr>
+        <tr><th style=" background-color: green;width: 20%" ><h1  id="h1"><img src="{% static 'images/FMG-Logo.png' %}" width="100" height="130">&nbsp;<span style="color: red">Food Mart</span> and <span style="color: darkblue">Grocerys</span> Store &nbsp;<img src="{% static 'images/shopping-cart.png' %}" width="100" height="130"></h1></th></tr>
         <tr>
             <th>
                 <div>
@@ -53,27 +53,30 @@
 
 
             <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: yellow">
+            ShopByCategory
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Fruits & Vegetables</a></li>
+
+              <li><a class="dropdown-item" href="#">groceries</a></li>
+              <li><a class="dropdown-item" href="#">Burgers and pizza</a></li>
+              <li><a class="dropdown-item" href="#">Cakes and Breads</a></li>
+
+
+
+            <li><a class="dropdown-item" href="#">Ice Cream</a></li>
           </ul>
         </li>
 
           <a class="nav-link" href="#">about</a>
-        <a class="nav-link" href="#">Logout</a>
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
 
       </ul>
         </li>
-
-
-
-
-      </div>
     </div>
-  </div>
+    </div>
+
 </nav></div>
                </th>
 

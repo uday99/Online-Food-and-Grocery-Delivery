@@ -1,0 +1,20 @@
+{% extends 'myshoptemplate/common.html' %}
+{% block common %}
+    {% load static %}
+
+    {% if request.session.contact %}
+        <h1 align="center">welcome to profile</h1>
+        <h2 align="center">Mr/Miss: {{ request.session.name }}</h2>
+
+        <h2 align="center">Your Registration No: {{ request.session.rno }}</h2>
+
+    {% else %}
+
+        <h1>Please Do Login First</h1>
+        <h4>Without Login You Cannot access this page</h4>
+    {% endif %}
+
+
+
+
+{% endblock %}

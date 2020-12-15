@@ -3,6 +3,8 @@
     {% load static %}
 <br>
     <h1 style="text-align: center;font-family: BlinkMacSystemFont;font-size: 30px;color: darkblue">Welcome to Login</h1>
+    <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
     <table align="center">
     <tr>
         <th>{{ lf.email.label }}</th>
@@ -16,11 +18,16 @@
 
         <th colspan="2"><button type="submit" class="btn btn-primary">Submit</button></th>
     </tr>
+    {% if error %}
 
+        <tr>
+        <th style="color: red">{{ error }}</th>
+        </tr>
+    {% endif %}
 
 
     </table>
-
+   </form>
 
 
 
