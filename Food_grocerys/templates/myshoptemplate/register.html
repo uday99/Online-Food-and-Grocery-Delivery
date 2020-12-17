@@ -1,8 +1,12 @@
 {% extends 'myshoptemplate/common.html' %}
 {% block common %}
-<h1 style="text-align: center;color: green">Registration Page</h1>
 
- <form method="post" action="{% url 'register' %}">
+
+<h1 style="text-align: center;color:blueviolet">Registration Page</h1>
+    {% if request.session.contact %}
+        <h2 style="text-align: center">You are a Member Already</h2>
+    {% else %}
+        <form method="post" action="{% url 'register' %}">
  {% csrf_token %}
 <table align="center">
 <tr>
@@ -38,5 +42,8 @@
 
 </table>
 </form>
+    {% endif %}
+
+
 
 {% endblock %}

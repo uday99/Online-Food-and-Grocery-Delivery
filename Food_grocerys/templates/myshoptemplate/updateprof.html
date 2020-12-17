@@ -1,0 +1,115 @@
+{% extends 'myshoptemplate/common.html' %}
+{% block common %}
+
+<br>
+
+    {% if request.session.name %}
+
+
+    <form method="post" action="{% url 'update_profile' %}" enctype="multipart/form-data">
+       {% csrf_token %}
+    <table align="center">
+    <tr>
+        <th  style="background-color: gold;font-size: 30px;font-family: 'Times New Roman'">Update Profile</th>
+    </tr>
+    <tr>
+        <th>
+            <select name="p1"><option>{{ request.session.name }}</option></select>
+
+        </th>
+
+    </tr>
+    <tr>
+        <th>
+            <select name="p2">               <option value="male" name="gender">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+        </th>
+    </tr>
+    <tr>
+        <th><input type="date" name="p3" required></th>
+    </tr>
+    <tr>
+        <th><textarea name="p4" placeholder="Address" required>  </textarea></th>
+    </tr>
+    <tr>
+        <th>Image:<input type="file"  name="p5"></th>
+    </tr>
+        <tr>
+
+            <th><button type="submit">Update</button></th>
+        </tr>
+
+
+
+    </table>
+    </form>
+    {% else %}
+
+        <h2 align="center">Please do Login First</h2>
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#    <form method="post" action="{% url 'update_profile' %}" enctype="multipart/form-data">#}
+{#    {% csrf_token %}#}
+{#    <table align="center" border="2">#}
+{#    <tr>#}
+{#        <th colspan="2" style="text-align: center;font-size: 30px;font-family: 'Times New Roman';background-color: brown">Update Profile</th>#}
+{#    </tr>#}
+{#        <tr>#}
+{#            <th>{{ pf.person.label }}</th>#}
+{#            <th>{{ pf.person }}</th>#}
+{##}
+{#        </tr>#}
+{##}
+{#    <tr>#}
+{#        <th>{{ pf.gender.label }}</th>#}
+{#        <th>{{ pf.gender}}</th>#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <th>{{ pf.dob.label}}</th>#}
+{#        <th>{{ pf.dob }}</th>#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <th>{{ pf.address.label }}</th>#}
+{#        <th>{{ pf.address }}</th>#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <th>{{ pf.image.label }}</th>#}
+{#        <th>{{ pf.image }}</th>#}
+{#    </tr>#}
+{#    <tr>#}
+{##}
+{#        <th colspan="2" style="text-align: center" ><br><button type="submit" class="btn btn-primary">Update</button></th>#}
+{#    </tr>#}
+{##}
+{##}
+{#</table>#}
+{#</form>#}
+
+

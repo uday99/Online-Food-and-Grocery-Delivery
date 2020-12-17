@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
-from myshop.models import RegistrationModel
-from myshop.forms import RegisterForm,LoginForm
+from myshop.models import RegistrationModel,ProfileModel
+from myshop.forms import RegisterForm,LoginForm,ProfileForm
 from django.contrib import messages
 
 # Create your views here.
 def showIndex(request):
-    lf=LoginForm()
-    return render(request,'myshoptemplate/index.html',{'lf':lf})
+
+    return render(request,'myshoptemplate/index.html')
 
 
 def register(request):
@@ -83,11 +83,29 @@ def loginPage(request):
 
 
 def welcomePage(request):
+
+
     return render(request,"welcome.html")
 
 
 def viewProfile(request):
-    return render(request,'myshoptemplate/v_profile.html')
+    try:
+        if request.session["name"]:
+            try:
+                result=ProfileModel.objects.get(person__name=request.session['name'])
+                status=True
+                return render(request, 'myshoptemplate/v_profile.html', {"status": status, 'result': result})
+            except ProfileModel.DoesNotExist:
+                status=False
+                return render(request, 'myshoptemplate/v_profile.html', {"status": status})
+        else:
+            return  render(request,'myshoptemplate/v_profile.html')
+    except KeyError:
+        return render(request, 'myshoptemplate/v_profile.html')
+
+
+
+
 
 
 def logoutProfile(request):
@@ -98,4 +116,50 @@ def logoutProfile(request):
         return redirect('main')
     except KeyError:
 
-        return render(request,"myshoptemplate/login.html",{"error":"Please do Login"})
+        return render(request,"myshoptemplate/login.html",{"error":"Please do Login",'lf':LoginForm()})
+
+
+def updatePro(request):
+    try:
+        if request.session['name']:
+            try:
+                p=request.POST.get('p1')
+                g=request.POST.get('p2')
+                db=request.POST.get('p3')
+                add=request.POST.get('p4')
+                img=request.FILES['p5']
+                name=request.session['name']
+                print(name)
+                pm=ProfileModel.objects.get(person__name=name)
+                print("welocme")
+#       rm=RegistrationModel.objects.get(name=name)
+                pm.gender=g
+                pm.dob=db
+                pm.address=add
+                pm.image=img
+                pm.save()
+                return redirect('v_profile')
+            except ProfileModel.DoesNotExist:
+                print('bye')
+                return render(request, "myshoptemplate/updateprof.html")
+        else:
+            return render(request, "myshoptemplate/updateprof.html")
+    except KeyError:
+        return render(request, "myshoptemplate/updateprof.html")
+
+
+def deleteProfile(request):
+    try:
+        if request.session['name']:
+            try:
+                name=request.session['name']
+                status = False
+                return render(request, 'myshoptemplate/v_profile.html', {"status": status})
+            except ProfileModel.DoesNotExist:
+                return render(request,'myshoptemplate/v_profile.html')
+        else:
+            return render(request, 'myshoptemplate/v_profile.html')
+
+
+    except KeyError:
+        return render(request,'myshoptemplate/v_profile.html')

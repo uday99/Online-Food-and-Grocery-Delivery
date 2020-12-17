@@ -2,10 +2,16 @@
 {% block common %}
     {% load static %}
 <br>
-    <h1 style="text-align: center;font-family: BlinkMacSystemFont;font-size: 30px;color: darkblue">Welcome to Login</h1>
-    <form method="post" action="{% url 'login' %}">
+
+
+    {% if request.session.contact %}
+        <h1 align="center"> you are Logged in Already</h1>
+
+    {% else %}
+        <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     <table align="center">
+    <tr><th colspan="2"><h1 style="text-align: center;font-family: BlinkMacSystemFont;font-size: 30px;color:indigo"> Login</h1></th></tr>
     <tr>
         <th>{{ lf.email.label }}</th>
         <th>{{ lf.email }}</th>
@@ -16,7 +22,7 @@
     </tr>
     <tr>
 
-        <th colspan="2"><button type="submit" class="btn btn-primary">Submit</button></th>
+        <th colspan="2"><br><button type="submit" class="btn btn-primary">Sign-Up</button></th>
     </tr>
     {% if error %}
 
@@ -28,6 +34,10 @@
 
     </table>
    </form>
+
+
+    {% endif %}
+
 
 
 

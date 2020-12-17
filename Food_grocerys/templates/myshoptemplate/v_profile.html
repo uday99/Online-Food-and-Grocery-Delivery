@@ -7,11 +7,70 @@
         <h2 align="center">Mr/Miss: {{ request.session.name }}</h2>
 
         <h2 align="center">Your Registration No: {{ request.session.rno }}</h2>
+        {% if status %}
+            <table align="center" border="2">
+            <tr>
+                <th style="text-align: center;font-size: 40px;font-family: 'Agency FB';color: gold;background-color: orange"colspan="2">Profile Details</th>
+            </tr>
+            <tr>
+
+                <th><img src="{{ result.image.url }}" height="110" width="200"></th>
+
+                <th>
+                    <table align="center" width="600" border="2" style="padding: 6px">
+                        <tr>
+                            <th width="200">Name:</th>
+                            <th>{{ result.person }}<br></th>
+                        </tr>
+                        <tr><th>Gender:</th>
+                            <th>{{ result.gender }}<br></th>
+
+                        </tr>
+                        <tr>
+                            <th>DOB:</th>
+                            <th>{{ result.dob }}<br></th>
+                        </tr>
+                        <tr>
+                            <th>Delivery Location:</th>
+                            <th>{{ result.address }}<br></th>
+                        </tr>
+
+
+
+                    </table>
+
+
+                </th>
+            </tr>
+
+
+
+            </table>
+
+
+
+        {% else %}
+            <form action="{% url 'update_profile' %}" method="get">
+            <h3 align="center"><button type="submit" class="btn bg-warning" style="width: 400px;height:80px;font-family:'Agency FB';font-size: 45px ">
+                    Click Update Profile
+                </button>
+             </h3>
+
+            </form>
+
+
+
+        {% endif %}
+
 
     {% else %}
 
-        <h1>Please Do Login First</h1>
-        <h4>Without Login You Cannot access this page</h4>
+
+
+        <h1 align="center">Please Do Login First</h1>
+        <h4 align="center">Without Login You Cannot access this page</h4>
+
+
     {% endif %}
 
 

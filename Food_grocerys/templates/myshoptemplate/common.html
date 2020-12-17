@@ -53,21 +53,42 @@
 
 
             <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: yellow">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:darkorange;color: yellow">
             ShopByCategory
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Fruits & Vegetables</a></li>
-
-              <li><a class="dropdown-item" href="#">groceries</a></li>
-              <li><a class="dropdown-item" href="#">Burgers and pizza</a></li>
-              <li><a class="dropdown-item" href="#">Cakes and Breads</a></li>
+              <li><a class="dropdown-item" href="#">Vegetables and Fruits</a></li>
 
 
+              <li><a class="dropdown-item" href="#">Cakes,Bakery&Diary</a></li>
 
-            <li><a class="dropdown-item" href="#">Ice Cream</a></li>
+              <li><a class="dropdown-item" href="#">Food grains, oils and masala</a></li>
+
+              <li><a class="dropdown-item" href="#">Bevarages</a></li>
+
+          </ul>
+        </li>&nbsp;
+
+
+
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: yellow;color: blue">
+            User-Profile
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'v_profile' %}">View Profile</a></li>
+
+
+              <li><a class="dropdown-item" href="{% url 'update_profile' %}">Update Profile</a></li>
+
+              <li><a class="dropdown-item" href="{% url 'deleteProf' %}">Delete Profile</a></li>
+
+
+
           </ul>
         </li>
+
+
 
           <a class="nav-link" href="#">about</a>
         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
