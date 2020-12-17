@@ -50,7 +50,8 @@
 
 
         {% else %}
-            <form action="{% url 'update_profile' %}" method="get">
+            <form action="{% url 'update_profile' %}" method="post">
+            {% csrf_token %}
             <h3 align="center"><button type="submit" class="btn bg-warning" style="width: 400px;height:80px;font-family:'Agency FB';font-size: 45px ">
                     Click Update Profile
                 </button>

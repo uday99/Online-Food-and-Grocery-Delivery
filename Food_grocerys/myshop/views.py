@@ -130,9 +130,10 @@ def updatePro(request):
                 img=request.FILES['p5']
                 name=request.session['name']
                 print(name)
-                pm=ProfileModel.objects.get(person__name=name)
+                pm = ProfileModel.objects.get(person__name=name)
                 print("welocme")
-#       rm=RegistrationModel.objects.get(name=name)
+
+
                 pm.gender=g
                 pm.dob=db
                 pm.address=add
@@ -140,8 +141,17 @@ def updatePro(request):
                 pm.save()
                 return redirect('v_profile')
             except ProfileModel.DoesNotExist:
-                print('bye')
-                return render(request, "myshoptemplate/updateprof.html")
+
+
+                g = request.POST.get('p2')
+                db = request.POST.get('p3')
+                add = request.POST.get('p4')
+                img = request.FILES['p5']
+                status=True
+
+                result=ProfileModel(gender=g,dob=db,address=add ,image=img,person_id=request.session['rno'])
+                result.save()
+                return render(request, "myshoptemplate/v_profile.html",{'status':status,'result':result})
         else:
             return render(request, "myshoptemplate/updateprof.html")
     except KeyError:
@@ -153,6 +163,7 @@ def deleteProfile(request):
         if request.session['name']:
             try:
                 name=request.session['name']
+                ProfileModel.objects.get(person__name=name).delete()
                 status = False
                 return render(request, 'myshoptemplate/v_profile.html', {"status": status})
             except ProfileModel.DoesNotExist:
